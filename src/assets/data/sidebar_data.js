@@ -1,55 +1,56 @@
-export const sidebar_data = [
+export const sidebarData = [
   {
-    sidebar_title: 'Dashboard',
-    sidebar_menu: [
+    title: 'Dashboard',
+    menu: [
       {
         name: 'Accueil',
-        icon: 'PersonOutline',
+        icon: 'RiHomeLine',
         path: '/',
       },
     ],
   },
   {
-    sidebar_title: 'Gestions des utilisateurs',
-    sidebar_menu: [
+    title: 'Gestion des utilisateurs',
+    menu: [
       {
         name: 'Clients',
-        icon: 'PersonOutline',
+        icon: 'RiUserLine',
         path: '/clients',
       },
       {
         name: 'Transactions',
-        icon: 'AttachMoney',
+        icon: 'RiExchangeDollarFill',
         path: '/transactions',
       },
     ],
   },
   {
-    sidebar_title: 'Notifications',
-    sidebar_menu: [
+    title: 'Notifications',
+    menu: [
       {
         name: 'Réclamations',
-        icon: 'DynamicFeed',
+        icon: 'RiErrorWarningLine',
         path: '/complaints',
       },
       {
         name: 'Messages',
-        icon: 'ChatBubbleOutline',
-        path: '',
+        icon: 'RiChat3Line',
+        // path: '/',
       },
     ],
   },
   {
-    sidebar_title: 'Staff',
-    sidebar_menu: [
+    title: 'Staff',
+    menu: [
       {
-        name: 'Administrateurs',
-        icon: 'WorkOutline',
+        name: 'Admininstrateurs',
+        icon: 'RiUserSettingsLine',
         path: '/admin',
       },
       {
-        name: 'Déconnexion',
-        icon: 'Logout',
+        name: 'Déconnecter',
+        icon: 'RiLogoutBoxRLine',
+        // path: '/lo',
       },
     ],
   },

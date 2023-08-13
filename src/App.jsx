@@ -1,8 +1,13 @@
 import './App.css'
 import Layout from './layout/Layout'
+import AppProvider from './provider/AppProvider'
 
 function App() {
-  return <Layout />
+  return (
+    <AppProvider>
+      <Layout />
+    </AppProvider>
+  )
 }
 
 export default App
