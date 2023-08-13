@@ -1,100 +1,99 @@
 import './sidebar.css'
+import SidebarMenu from '../SidebarMenu'
 
-import {
-  LineStyle,
-  PersonOutline,
-  AttachMoney,
-  DynamicFeed,
-  ChatBubbleOutline,
-  WorkOutline,
-} from '@mui/icons-material'
-import LogoutIcon from '@mui/icons-material/Logout'
-import { Link } from 'react-router-dom'
+export const Sidebar = () => {
+  const sidebarData = [
+    {
+      sidebar_title: 'Dashboard',
+      sidebar_menu: [
+        {
+          name: 'Accueil',
+          icon: 'PersonOutline',
+          path: '/',
+        },
+      ],
+    },
+    {
+      sidebar_title: 'Gestions des utilisateurs',
+      sidebar_menu: [
+        {
+          name: 'Clients',
+          icon: 'PersonOutline',
+          path: '/clients',
+        },
+        {
+          name: 'Transactions',
+          icon: 'AttachMoney',
+          path: '/transactions',
+        },
+      ],
+    },
+    {
+      sidebar_title: 'Notifications',
+      sidebar_menu: [
+        {
+          name: 'Réclamations',
+          icon: 'DynamicFeed',
+          path: '/complaints',
+        },
+        {
+          name: 'Messages',
+          icon: 'ChatBubbleOutline',
+          path: '',
+        },
+      ],
+    },
+    {
+      sidebar_title: 'Staff',
+      sidebar_menu: [
+        {
+          name: 'Administrateurs',
+          icon: 'WorkOutline',
+          path: '/admin',
+        },
+        {
+          name: 'Déconnexion',
+          icon: 'Logout',
+        },
+      ],
+    },
+  ]
 
-const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
-        {/* Menu Sidebar */}
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
-          <ul className="sidebarList">
-            <Link
-              to="/"
-              className="link"
-            >
-              <li className="sidebarListItem active">
-                <LineStyle className="sidebarIcon" />
-                Acceuil
-              </li>
-            </Link>
-          </ul>
-        </div>
-        {/* Menu Sidebar */}
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Gestion client</h3>
-          <ul className="sidebarList">
-            <Link
-              to="/clients"
-              className="link"
-            >
-              <li className="sidebarListItem active">
-                <PersonOutline className="sidebarIcon" />
-                Clients
-              </li>
-            </Link>
-            <Link
-              to="/transactions"
-              className="link"
-            >
-              <li className="sidebarListItem">
-                <AttachMoney className="sidebarIcon" />
-                Transactions
-              </li>
-            </Link>
-          </ul>
-        </div>
-        {/* Menu Sidebar */}
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
-          <ul className="sidebarList">
-            <Link
-              to="/complaints"
-              className="link"
-            >
-              <li className="sidebarListItem">
-                <DynamicFeed className="sidebarIcon" />
-                Réclamations
-              </li>
-            </Link>
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Messages
-            </li>
-          </ul>
-        </div>
-        {/* Menu Sidebar */}
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
-          <ul className="sidebarList">
-            <Link
-              to="/admin"
-              className="link"
-            >
-              <li className="sidebarListItem active">
-                <WorkOutline className="sidebarIcon" />
-                Administrateurs
-              </li>
-            </Link>
-            <li className="sidebarListItem">
-              <LogoutIcon className="sidebarIcon" />
-              Déconnexion
-            </li>
-          </ul>
-        </div>
+        {sidebarData.map((item, index) => (
+          <SidebarMenu
+            key={index}
+            sidebar_title={item.sidebar_title}
+            sidebar_menu={item.sidebar_menu}
+          />
+        ))}
       </div>
     </div>
   )
 }
 
 export default Sidebar
+
+// import { PropTypes } from 'react-prop-types'
+
+// import {
+//   LineStyle,
+//   PersonOutline,
+//   AttachMoney,
+//   DynamicFeed,
+//   ChatBubbleOutline,
+//   WorkOutline,
+// } from '@mui/icons-material'
+// import LogoutIcon from '@mui/icons-material/Logout
+// Sidebar.propTypes = {
+//   sidebar_data: PropTypes.arrayOf({
+//     sidebar_title: PropTypes.string,
+//     sidebar_menu: PropTypes.arrayOf({
+//       name: PropTypes.string,
+//       icon: PropTypes.string,
+//       path: PropTypes.string,
+//     }),
+//   }),
+// }
