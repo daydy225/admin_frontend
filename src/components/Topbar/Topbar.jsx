@@ -1,5 +1,6 @@
 import { NotificationsNone, Language, Settings } from '@mui/icons-material'
 import './topbar.css'
+import { Link } from 'react-router-dom'
 
 const Topbar = () => {
   return (
@@ -7,7 +8,16 @@ const Topbar = () => {
       <div className="topbar">
         <div className="topbarWrapper">
           <div className="topLeft">
-            <span className="logo">SOCIETY</span>
+            <Link
+              to="/"
+              style={{
+                font: 'inherit',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <span className="logo">SOCIETY</span>
+            </Link>
           </div>
           <div className="topRight">
             <div className="topbarIconContainer">

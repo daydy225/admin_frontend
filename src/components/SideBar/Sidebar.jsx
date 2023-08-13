@@ -2,18 +2,13 @@ import './sidebar.css'
 
 import {
   LineStyle,
-  Timeline,
-  TrendingUp,
   PersonOutline,
-  Storefront,
   AttachMoney,
-  BarChart,
-  MailOutline,
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
-  Report,
 } from '@mui/icons-material'
+import LogoutIcon from '@mui/icons-material/Logout'
 import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
@@ -30,63 +25,48 @@ const Sidebar = () => {
             >
               <li className="sidebarListItem active">
                 <LineStyle className="sidebarIcon" />
-                Home
+                Acceuil
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li>
           </ul>
         </div>
         {/* Menu Sidebar */}
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Quick Menu</h3>
+          <h3 className="sidebarTitle">Gestion client</h3>
           <ul className="sidebarList">
             <Link
-              to="/users"
+              to="/clients"
               className="link"
             >
               <li className="sidebarListItem active">
                 <PersonOutline className="sidebarIcon" />
-                Users
+                Clients
               </li>
             </Link>
             <Link
-              to="/products"
+              to="/transactions"
               className="link"
             >
               <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
-                Products
+                <AttachMoney className="sidebarIcon" />
+                Transactions
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              reports
-            </li>
           </ul>
         </div>
         {/* Menu Sidebar */}
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem active">
-              <MailOutline className="sidebarIcon" />
-              Mail
-            </li>
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedbacks
-            </li>
+            <Link
+              to="/complaints"
+              className="link"
+            >
+              <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Réclamations
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
@@ -97,17 +77,18 @@ const Sidebar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem active">
-              <WorkOutline className="sidebarIcon" />
-              Manage
-            </li>
+            <Link
+              to="/admin"
+              className="link"
+            >
+              <li className="sidebarListItem active">
+                <WorkOutline className="sidebarIcon" />
+                Administrateurs
+              </li>
+            </Link>
             <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <Report className="sidebarIcon" />
-              reports
+              <LogoutIcon className="sidebarIcon" />
+              Déconnexion
             </li>
           </ul>
         </div>
