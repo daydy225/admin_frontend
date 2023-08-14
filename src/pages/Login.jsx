@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm/LoginForm'
 import { login } from '../services/admin'
 import { adminContext } from '../context/adminContext'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 const Login = () => {
   const [formdata, setFormdata] = useState({})
@@ -13,46 +14,49 @@ const Login = () => {
   const navigate = useNavigate()
   const handleSubmit = e => {
     e.preventDefault()
-    const { admin, password } = e.target.elements
+    const { username, password } = e.target.elements
 
-    if (admin.value === '' || password.value === '') {
+    if (username.value === '' || password.value === '') {
       return
     }
     setFormdata({
-      admin: admin.value,
+      username: username.value,
       password: password.value,
     })
     setLoading(true)
   }
-  // const { admin, password } = formdata
-  console.log('formdata', formdata)
 
-  // const adminLogin = useCallback(async () => {
-  //   try {
-  //     const data = await login(admin, password)
-  //     console.log('user data', data)
-  //     setAdminData(data)
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }, [admin, password, setAdminData])
+  const adminLogin = useCallback(async () => {
+    if (!formdata.username || !formdata.password) return
+    try {
+      const data = await login(formdata)
+      console.log('user data', data)
+      console.log('token', data.result.token)
+      if (data.success === true) {
+        setAdminData(data)
+        localStorage.setItem('Admin_token', JSON.stringify(data.result.token))
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }, [formdata, setAdminData])
 
-  // useEffect(() => {
-  //   adminLogin()
-  //   if (loading) {
-  //     setLoading(false)
-  //     navigate('/')
-  //   }
-  // }, [adminLogin, loading, navigate])
+  useEffect(() => {
+    adminLogin()
+    if (loading) {
+      setLoading(false)
+      navigate('/')
+    }
+  }, [adminLogin, loading, navigate])
 
-  if (loading) return <div>loading...</div>
+  if (loading) return <Loader loading={loading} />
 
   return (
     <LoginForm onSubmit={handleSubmit}>
       <Input
         placeholder="Admin"
         type="text"
-        name="admin"
+        name="username"
       />
       <Input
         placeholder="Mot de passe"
