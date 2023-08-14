@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 // const baseUrl = 'http://127.0.0.1:3000/api'
-const baseUrl = 'https://admin-backend-society.fly.dev/api'
+const baseUrl = 'https://admin-backend-society.fly.dev/api/auth'
 
 export const login = async credentials => {
-  const response = await axios.post(`${baseUrl}/auth/admin-login`, credentials)
+  const response = await axios.post(`${baseUrl}/admin-login`, credentials)
   return response.data
 }
 
 export const verify = async token => {
-  const response = await axios.get(`${baseUrl}/auth/verify-token`, {
+  const response = await axios.get(`${baseUrl}/verify-token`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
