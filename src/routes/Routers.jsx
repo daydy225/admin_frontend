@@ -8,36 +8,38 @@ import { Routes, Route } from 'react-router-dom'
 
 const Routers = () => {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<Home />}
-      />
-      <Route
-        path="/clients"
-        element={<Home />}
-      />
-      <Route
-        path="/admin"
-        element={<Admin />}
-      />
-      <Route
-        path="/complaints"
-        element={<Home />}
-      />
-      <Route
-        path="/transactions"
-        element={<Home />}
-      />
-      <Route
-        path="/login"
-        element={<Login />}
-      />
-      {/* <Route
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/clients"
+          element={<Home />}
+        />
+        <Route
+          path="/admin"
+          element={<Admin />}
+        />
+        <Route
+          path="/complaints"
+          element={<Home />}
+        />
+        <Route
+          path="/transactions"
+          element={<Home />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+        {/* <Route
         path="/register"
         element={<Signup />}
       /> */}
-    </Routes>
+      </Routes>
+    </>
   )
 }
 

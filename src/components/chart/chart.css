@@ -10,10 +10,10 @@
 }
 
 /* Media queries */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .chart {
     width: 95%;
-    height: 200px;
+    height: 150px;
     margin: 15px auto;
     font-size: 0.7em;
   }

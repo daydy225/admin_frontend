@@ -15,7 +15,7 @@ const SidebarMenu = ({ sidebarData, onClick }) => {
         >
           <li
             className={`sidebarListItem ${path === currentPath && 'active'}`}
-            onClick={name !== 'Déconnecter' ? onClick : null}
+            onClick={name === 'Déconnecter' ? onClick : null}
           >
             <Icon
               icon={icon}
