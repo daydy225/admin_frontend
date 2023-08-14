@@ -30,8 +30,6 @@ const Login = () => {
     if (!formdata.username || !formdata.password) return
     try {
       const data = await login(formdata)
-      console.log('user data', data)
-      console.log('token', data.result.token)
       if (data.success === true) {
         setAdminData(data)
         localStorage.setItem('Admin_token', JSON.stringify(data.result.token))
