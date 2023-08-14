@@ -6,11 +6,6 @@ const SidebarMenu = ({ sidebarData, onClick }) => {
   const { title, menu } = sidebarData
   const currentPath = window.location.pathname
 
-  const iconStyle = {
-    marginRight: '15px',
-    fontSize: '40px !important',
-  }
-
   const menuItems = menu
     ? menu.map(({ path, icon, name }, index) => (
         <Link
@@ -20,13 +15,13 @@ const SidebarMenu = ({ sidebarData, onClick }) => {
         >
           <li
             className={`sidebarListItem ${path === currentPath && 'active'}`}
-            onClick={name === 'Déconnecter' ? onClick : null}
+            onClick={name !== 'Déconnecter' ? onClick : null}
           >
             <Icon
               icon={icon}
-              style={iconStyle}
+              style="sidebarIcon"
             />
-            {name}
+            <span>{name}</span>
           </li>
         </Link>
       ))

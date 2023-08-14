@@ -1,0 +1,98 @@
+.widgetSm {
+  flex: 1;
+  webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  margin-right: 20px;
+  @media only screen and (max-width: 480px) {
+    margin-right: 0;
+    margin: 10px 15px;
+  }
+}
+
+.widgetSmTitle {
+  font-size: 22px;
+  font-weight: 600;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 16px;
+  }
+}
+
+.widgetSmImg {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  @media only screen and (max-width: 480px) {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.widgetSmList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.widgetSmListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  gap: 10px;
+
+  @media only screen and (max-width: 480px) {
+    gap: 20px;
+  }
+}
+
+.widgetSmUser {
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 480px) {
+    font-size: 8px;
+  }
+}
+
+.widgetSmUsername {
+  font-weight: 600;
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+.widgetSmUserTitle {
+  font-weight: 300;
+}
+
+.widgetSmButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 10px;
+  background-color: #eeeef7;
+  color: #555;
+  cursor: pointer;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 10px;
+  }
+}
+
+.widgetSmButton:hover {
+  background-color: #e7e7f1;
+}
+
+.widgetSmIcon {
+  font-size: 16px;
+  margin-right: 5px;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 8px;
+  }
+}

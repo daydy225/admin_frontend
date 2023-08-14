@@ -56,3 +56,38 @@
   object-position: center;
   cursor: pointer;
 }
+
+.toggle-menu {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px) {
+  .topbar {
+    height: 50px;
+    position: sticky;
+  }
+  .topbarWrapper {
+    padding: 0 10px;
+  }
+  .logo {
+    font-size: 25px;
+  }
+  .topRight {
+    margin-right: 5px;
+  }
+  .topbarIconContainer {
+    /* margin-right: 5px; */
+    display: none;
+  }
+  .topAvatar {
+    width: 25px;
+    height: 25px;
+  }
+  .toggle-menu {
+    display: inline-block;
+    margin-right: 15px;
+    fontsize: 25px;
+  }
+}

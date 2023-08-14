@@ -31,6 +31,10 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
+
+  & > span {
+    margin-left: 10px;
+  }
 }
 
 .sidebarListItem.active,
@@ -39,11 +43,35 @@
 }
 
 .sidebarIcon {
-  margin-right: 5px;
-  font-size: 20px !important;
+  margin-right: 15px;
+  font-size: 40px !important;
 }
 
 .link {
   color: inherit;
   text-decoration: none;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 768px) {
+  .sidebarTitle {
+    display: none;
+  }
+
+  .sidebarList {
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebarListItem {
+    padding: 10px;
+    & > span {
+      display: none;
+    }
+  }
+
+  .sidebar {
+    border-top-right-radius: 10px;
+  }
 }

@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { sidebarData } from '../../assets/data/sidebar_data'
 import SidebarMenu from '../SidebarMenu'
 

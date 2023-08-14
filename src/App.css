@@ -25,3 +25,27 @@ body {
     flex: 4;
   }
 }
+
+@media (max-width: 768px) {
+  .show_sidebar {
+    display: none;
+  }
+
+  /* .container {
+    & > div:first-child {
+      position: absolute;
+    }
+  } */
+}
+
+.homeWidgets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 10px 30px 30px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}

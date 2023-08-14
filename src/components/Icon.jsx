@@ -42,7 +42,7 @@ const Icon = ({ icon, style }) => {
 
   return (
     <Suspense fallback={null}>
-      <IconComponent style={style} />
+      <IconComponent style={{ className: style }} />
     </Suspense>
   )
 }
