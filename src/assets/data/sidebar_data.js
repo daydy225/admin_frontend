@@ -50,7 +50,7 @@ export const sidebarData = [
       {
         name: 'Déconnecter',
         icon: 'RiLogoutBoxRLine',
-        // path: '/lo',
+        // path: '/logout',
       },
     ],
   },

@@ -30,15 +30,6 @@ const Routers = () => {
         element={<Transactions />}
       />
       <Route
-        path="/messages"
-        element={<div>Messages</div>}
-      />
-      <Route
-        path="/logout"
-        element={<div>Logout</div>}
-      />
-
-      <Route
         path="/login"
         element={<Login />}
       />
