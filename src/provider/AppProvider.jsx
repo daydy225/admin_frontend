@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { userContext } from '../context/userContext'
+import { adminContext } from '../context/adminContext'
 
 const AppProvider = ({ children }) => {
-  const [userData, setUserData] = useState('client')
+  const [adminData, setAdminData] = useState(null)
 
   return (
-    <userContext.Provider value={{ userData, setUserData }}>
+    <adminContext.Provider value={{ adminData, setAdminData }}>
       {children}
-    </userContext.Provider>
+    </adminContext.Provider>
   )
 }
 
