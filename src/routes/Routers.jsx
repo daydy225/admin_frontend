@@ -2,8 +2,8 @@ import Admin from '../pages/Admin'
 // import Complaints from '../pages/Complaints'
 import Home from '../pages/Home'
 import Login from '../pages/Login'
-// import Clients from '../pages/Clients'
-// import Transactions from '../pages/Transactions'
+import Clients from '../pages/Clients'
+import Transactions from '../pages/Transactions'
 import { Routes, Route } from 'react-router-dom'
 
 const Routers = () => {
@@ -16,7 +16,7 @@ const Routers = () => {
         />
         <Route
           path="/clients"
-          element={<Home />}
+          element={<Clients />}
         />
         <Route
           path="/admin"
@@ -28,7 +28,7 @@ const Routers = () => {
         />
         <Route
           path="/transactions"
-          element={<Home />}
+          element={<Transactions />}
         />
         <Route
           path="/login"
