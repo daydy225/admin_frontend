@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'http://127.0.0.1:3000/api'
-// const baseUrl = 'https://admin-backend-society.fly.dev/api/'
+// const baseUrl = 'http://127.0.0.1:3000/api'
+const baseUrl = 'https://admin-backend-society.fly.dev/api/'
 
 export const login = async credentials => {
   const response = await axios.post(`${baseUrl}/auth/admin-login`, credentials)
