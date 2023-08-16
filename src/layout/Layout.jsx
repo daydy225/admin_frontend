@@ -6,7 +6,6 @@ import {
   lazy,
   Suspense,
 } from 'react'
-// import { adminContext } from '../context/adminContext'
 import { verify } from '../services/admin'
 import { tokenContext } from '../context/tokenContext'
 import Loader from '../components/Loader'

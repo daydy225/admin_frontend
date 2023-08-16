@@ -1,6 +1,9 @@
 import visualData from '../../../assets/images/Visual-data.png'
+import { adminContext } from '../../../context/adminContext'
+import { useContext } from 'react'
 
-const EditAdminInfo = ({ admin }) => {
+const EditAdminInfo = () => {
+  const { admin } = useContext(adminContext)
   const { fullname, username, email, phone } = admin
 
   return (
@@ -40,7 +43,7 @@ const EditAdminInfo = ({ admin }) => {
             <label>Phone</label>
             <input
               type="text"
-              placeholder={phone}
+              placeholder={`+225 ${phone}`}
               className="userUpdateInput"
             />
           </div>
@@ -65,7 +68,7 @@ const EditAdminInfo = ({ admin }) => {
               style={{ display: 'none' }}
             /> */}
           </div>
-          <button className="userUpdateButton">Update</button>
+          <button className="userUpdateButton">Modifier</button>
         </div>
       </form>
     </div>

@@ -3,7 +3,6 @@ import Button from '../components/Button/Button'
 import Input from '../components/Input/Input'
 import LoginForm from '../components/LoginForm/LoginForm'
 import { login } from '../services/admin'
-// import { adminContext } from '../context/adminContext'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import { tokenContext } from '../context/tokenContext'
@@ -11,7 +10,6 @@ import { tokenContext } from '../context/tokenContext'
 const Login = () => {
   const [formdata, setFormdata] = useState({})
   const [loading, setLoading] = useState(false)
-  // const { setAdminData } = useContext(adminContext)
   const { setToken } = useContext(tokenContext)
   const navigate = useNavigate()
   const handleSubmit = e => {

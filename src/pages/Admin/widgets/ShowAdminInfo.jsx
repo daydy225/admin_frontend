@@ -1,8 +1,12 @@
 import Icon from '../../../components/Icon'
 import { formatDate } from '../../../utils/dateHelper'
+import { adminContext } from '../../../context/adminContext'
+import { useContext } from 'react'
 
-const ShowAdminInfo = ({ admin }) => {
-  if (admin === undefined) {
+const ShowAdminInfo = () => {
+  const { admin } = useContext(adminContext)
+
+  if (admin === undefined || admin === null) {
     window.location.href = '/adminList'
   }
 
@@ -43,7 +47,7 @@ const ShowAdminInfo = ({ admin }) => {
         {/* User Info */}
         <div className="userShowInfo">
           <Icon icon="RiPhoneLine" />
-          <span className="userShowInfoTitle">{phone}</span>
+          <span className="userShowInfoTitle">+225 {phone}</span>
         </div>
         {/* User Info */}
         <div className="userShowInfo">

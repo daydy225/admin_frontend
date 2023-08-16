@@ -4,12 +4,12 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { DataGrid } from '@mui/x-data-grid'
 import { getAllAdmins } from '../../services/admin'
 import { tokenContext } from '../../context/tokenContext'
-import { adminContext } from '../../context/adminContext'
+import { adminListContext } from '../../context/adminContext'
 import Loader from '../../components/Loader'
 import Icon from '../../components/Icon'
 
 const AdminList = () => {
-  const { allAdmins, setAllAdmins } = useContext(adminContext)
+  const { allAdmins, setAllAdmins } = useContext(adminListContext)
   const [isLoading, setisLoading] = useState(false)
   const { token } = useContext(tokenContext)
 

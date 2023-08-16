@@ -1,18 +1,18 @@
 import { Link, useParams } from 'react-router-dom'
 import EditAdminInfo from './widgets/EditAdminInfo'
 import ShowAdminInfo from './widgets/ShowAdminInfo'
-import { useContext, useEffect, useState } from 'react'
-import { adminContext } from '../../context/adminContext'
+import { useContext, useEffect } from 'react'
+import { adminListContext, adminContext } from '../../context/adminContext'
 
 const Admin = () => {
-  const { allAdmins } = useContext(adminContext)
+  const { allAdmins } = useContext(adminListContext)
+  const { setAdmin } = useContext(adminContext)
   const { id } = useParams()
-  const [admin, setAdmin] = useState({})
 
   useEffect(() => {
     const foundAdmin = allAdmins.find(admin => admin._id === id)
     setAdmin(foundAdmin)
-  }, [allAdmins, id])
+  }, [allAdmins, id, setAdmin])
   return (
     <div>
       <div className="user">
@@ -23,8 +23,8 @@ const Admin = () => {
           </Link>
         </div>
         <div className="userContainer">
-          <ShowAdminInfo admin={admin} />
-          <EditAdminInfo admin={admin} />
+          <ShowAdminInfo />
+          <EditAdminInfo />
         </div>
       </div>
     </div>
