@@ -17,7 +17,7 @@ const Loader = ({ loading, height, color, size }) => {
       <DotLoader
         color={color || '#8ec5fc'}
         loading={loading}
-        size={size || 100}
+        size={size || 80}
         cssOverride={override}
         aria-label="Loading ..."
         data-testid="loader"

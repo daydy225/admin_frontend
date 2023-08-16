@@ -38,10 +38,10 @@ const Routers = () => {
           path="/transactions"
           element={<Transactions />}
         />
-        {/* <Route
-        path="/register"
-        element={<Signup />}
-      /> */}
+        <Route
+          path="*"
+          element={<Home />}
+        />
       </Routes>
     </>
   )
