@@ -9,10 +9,10 @@ import {
 import { verify } from '../services/admin'
 import { tokenContext } from '../context/tokenContext'
 import Loader from '../components/Loader'
-import Topbar from '../components/Topbar/Topbar'
-import Sidebar from '../components/SideBar/Sidebar'
 import Routers from '../routes/Routers'
 const Login = lazy(() => import('../pages/Login'))
+const Sidebar = lazy(() => import('../components/SideBar/Sidebar'))
+const Topbar = lazy(() => import('../components/Topbar/Topbar'))
 
 const Layout = () => {
   const { token } = useContext(tokenContext)
@@ -51,11 +51,13 @@ const Layout = () => {
 
   return (
     <>
-      <Topbar />
-      <main className="container">
-        <Sidebar />
-        <Routers />
-      </main>
+      <Suspense fallback={<Loader />}>
+        <Topbar />
+        <main className="container">
+          <Sidebar />
+          <Routers />
+        </main>
+      </Suspense>
     </>
   )
 }
