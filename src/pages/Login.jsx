@@ -3,14 +3,16 @@ import Button from '../components/Button/Button'
 import Input from '../components/Input/Input'
 import LoginForm from '../components/LoginForm/LoginForm'
 import { login } from '../services/admin'
-import { adminContext } from '../context/adminContext'
+// import { adminContext } from '../context/adminContext'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
+import { tokenContext } from '../context/tokenContext'
 
 const Login = () => {
   const [formdata, setFormdata] = useState({})
   const [loading, setLoading] = useState(false)
-  const { setAdminData } = useContext(adminContext)
+  // const { setAdminData } = useContext(adminContext)
+  const { setToken } = useContext(tokenContext)
   const navigate = useNavigate()
   const handleSubmit = e => {
     e.preventDefault()
@@ -30,14 +32,16 @@ const Login = () => {
     if (!formdata.username || !formdata.password) return
     try {
       const data = await login(formdata)
-      if (data.success === true) {
-        setAdminData(data)
-        localStorage.setItem('Admin_token', JSON.stringify(data.result.token))
+      if (data.success) {
+        const { token } = data.result
+
+        localStorage.setItem('Admin_token', JSON.stringify(token))
+        setToken(data.result.token)
       }
     } catch (e) {
       console.log(e)
     }
-  }, [formdata, setAdminData])
+  }, [formdata, setToken])
 
   useEffect(() => {
     adminLogin()

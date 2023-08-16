@@ -19,7 +19,7 @@ const SidebarMenu = ({ sidebarData, onClick }) => {
           >
             <Icon
               icon={icon}
-              style="sidebarIcon"
+              style={{ marginRight: '10px', fontSize: '20px' }}
             />
             <span>{name}</span>
           </li>

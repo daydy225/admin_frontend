@@ -1,27 +1,54 @@
-import { useCallback, useContext, useEffect } from 'react'
-import { adminContext } from '../context/adminContext'
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
+} from 'react'
+// import { adminContext } from '../context/adminContext'
 import { verify } from '../services/admin'
-
+import { tokenContext } from '../context/tokenContext'
+import Loader from '../components/Loader'
 import Topbar from '../components/Topbar/Topbar'
 import Sidebar from '../components/SideBar/Sidebar'
 import Routers from '../routes/Routers'
-import Login from '../pages/Login'
+const Login = lazy(() => import('../pages/Login'))
+
 const Layout = () => {
-  const { adminData, setAdminData } = useContext(adminContext)
+  const { token } = useContext(tokenContext)
+  const [isLoading, setIsLoading] = useState(true)
+  const [newToken, setNewToken] = useState('')
 
   const verifyToken = useCallback(async () => {
-    const token = JSON.parse(localStorage.getItem('Admin_token'))
-    const result = await verify(token)
-    if (result.success === true) {
-      setAdminData(result.user)
+    try {
+      const result = await verify(token)
+      if (result.success === true) {
+        const { token: newToken } = result.user
+        setNewToken(newToken)
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsLoading(false)
     }
-  }, [setAdminData])
+  }, [token])
 
   useEffect(() => {
     verifyToken()
   }, [verifyToken])
 
-  if (!adminData) return <Login />
+  if (isLoading) {
+    return <Loader />
+  }
+
+  if (!newToken) {
+    return (
+      <Suspense fallback={<Loader />}>
+        <Login />
+      </Suspense>
+    )
+  }
 
   return (
     <>

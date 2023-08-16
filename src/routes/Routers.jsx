@@ -1,10 +1,10 @@
-import Admin from '../pages/Admin'
-// import Complaints from '../pages/Complaints'
 import Home from '../pages/Home'
-import Login from '../pages/Login'
 import Clients from '../pages/Clients'
 import Transactions from '../pages/Transactions'
 import { Routes, Route } from 'react-router-dom'
+import AdminList from '../pages/Admin/AdminList'
+import Admin from '../pages/Admin/Admin'
+import CreateAdmin from '../pages/Admin/CreateAdmin'
 
 const Routers = () => {
   return (
@@ -19,7 +19,15 @@ const Routers = () => {
           element={<Clients />}
         />
         <Route
-          path="/admin"
+          path="/adminList"
+          element={<AdminList />}
+        />
+        <Route
+          path="/newAdmin"
+          element={<CreateAdmin />}
+        />
+        <Route
+          path="/admin/:id"
           element={<Admin />}
         />
         <Route
@@ -29,10 +37,6 @@ const Routers = () => {
         <Route
           path="/transactions"
           element={<Transactions />}
-        />
-        <Route
-          path="/login"
-          element={<Login />}
         />
         {/* <Route
         path="/register"

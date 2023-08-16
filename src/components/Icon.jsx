@@ -32,6 +32,36 @@ const iconComponents = {
       default: module.RiLogoutBoxRLine,
     })),
   ),
+  RiAdminFill: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiAdminFill,
+    })),
+  ),
+  RiCalendarLine: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiCalendarLine,
+    })),
+  ),
+  RiPhoneLine: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiPhoneLine,
+    })),
+  ),
+  RiMailLine: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiMailLine,
+    })),
+  ),
+  RiFocus3Line: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiFocus3Line,
+    })),
+  ),
+  RiUploadCloudLine: lazy(() =>
+    import('react-icons/ri').then(module => ({
+      default: module.RiUploadCloudLine,
+    })),
+  ),
 }
 
 const Icon = ({ icon, style }) => {
@@ -42,7 +72,7 @@ const Icon = ({ icon, style }) => {
 
   return (
     <Suspense fallback={null}>
-      <IconComponent style={{ className: style }} />
+      <IconComponent style={style} />
     </Suspense>
   )
 }

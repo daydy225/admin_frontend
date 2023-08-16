@@ -45,7 +45,7 @@ export const sidebarData = [
       {
         name: 'Admininstrateurs',
         icon: 'RiUserSettingsLine',
-        path: '/admin',
+        path: '/adminList',
       },
       {
         name: 'Déconnecter',
