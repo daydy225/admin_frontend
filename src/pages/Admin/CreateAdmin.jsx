@@ -1,28 +1,73 @@
-import { useContext, useEffect } from 'react'
-import { adminContext } from '../../context/adminContext'
+import { useCallback, useState } from 'react'
+import { register } from '../../services/admin'
+import Loader from '../../components/Loader'
 
 const CreateAdmin = () => {
-  const { admin } = useContext(adminContext)
+  // const { admin, } = useContext(adminContext)
+  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    username: '',
+    fullname: '',
+    email: '',
+    phone: '',
+    password: '',
+    role: 'Veuillez sélectionner un role',
+  })
 
-  console.log('admin', admin)
+  const handleSubmit = e => {
+    e.preventDefault()
+    const isFormEmpty = Object.values(formData).some(
+      value => value === '' || value === 'Veuillez sélectionner un role',
+    )
+    if (isFormEmpty) return alert('Veuillez remplir tous les champs')
+    console.log('formData', formData)
+    handleRegisterAdmin()
+    setIsLoading(true)
+  }
 
-  useEffect(() => {
-    if (admin === undefined || admin === null) {
-      window.location.href = '/adminList'
+  const handleChange = e => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleRegisterAdmin = useCallback(async () => {
+    try {
+      const data = await register(formData)
+      console.log('data', data)
+      if (data.success) {
+        alert('Utilisateur créé avec succès')
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+      setFormData({
+        username: '',
+        fullname: '',
+        email: '',
+        phone: '',
+        password: '',
+        role: '',
+      })
     }
-  }, [admin])
+  }, [formData, setIsLoading, setFormData])
 
   return (
     <div className="newUser">
       <h1 className="newUserTitle">Nouvel utilisateur</h1>
-      <form className="newUserForm">
+      <form
+        className="newUserForm"
+        onSubmit={handleSubmit}
+      >
         {/* New User Item*/}
         <div className="newUserItem">
           <label>Utilisateur</label>
           <input
             type="text"
             name="username"
-            placeholder={admin.username}
+            placeholder="Utilisateur"
+            value={formData.username}
+            onChange={handleChange}
           />
         </div>
         {/* New User Item*/}
@@ -31,7 +76,9 @@ const CreateAdmin = () => {
           <input
             type="text"
             name="fullname"
-            placeholder={admin.fullname}
+            placeholder="Nom Complet"
+            value={formData.fullname}
+            onChange={handleChange}
           />
         </div>
         {/* New User Item*/}
@@ -40,7 +87,9 @@ const CreateAdmin = () => {
           <input
             type="text"
             name="email"
-            placeholder={admin.email}
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Entrer une adresse email"
           />
         </div>
         {/* New User Item*/}
@@ -49,6 +98,8 @@ const CreateAdmin = () => {
           <input
             type="password"
             name="password"
+            value={formData.password}
+            onChange={handleChange}
             placeholder="Entrer un nouveau mot de passe"
           />
         </div>
@@ -58,93 +109,54 @@ const CreateAdmin = () => {
           <input
             type="text"
             name="phone"
-            placeholder={`+225 ${admin.phone}`}
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Entrer un numéro de téléphone"
           />
         </div>
         <div className="newUserItem">
-          <label>Active</label>
+          <label>Role</label>
           <select
-            name="active"
-            id="active"
+            name="role"
+            id="role"
             className="newUserSelect"
+            value={formData.role}
+            onChange={handleChange}
           >
             {/* <option value="">Select an option</option> */}
-            <option value="active">Yes</option>
-            <option value="inactive">No</option>
+            <option value="Veuillez remplir tous les champs">
+              Veuillez sélectionner un role
+            </option>
+            <option value="superadmin">Super-Administrateur</option>
+            <option value="admin">Administrateur</option>
           </select>
         </div>
-        <button className="newUserButton">Créer</button>
+        <button className="newUserButton">
+          <span style={{ display: isLoading ? 'none' : '' }}>Créer</span>
+
+          {isLoading && (
+            <Loader
+              color="#fff"
+              height="20px"
+              size={10}
+            />
+          )}
+        </button>
       </form>
     </div>
   )
 }
 
-export const CreaAdminInput = () => {
-  return (
-    <div className="newUserItem">
-      <label>Username</label>
-      <input
-        type="text"
-        placeholder="john"
-      />
-    </div>
-  )
-}
+// export const CreaAdminInput = () => {
+//   return (
+//     <div className="newUserItem">
+//       <label>Username</label>
+//       <input
+//         type="text"
+//         placeholder="john"
+//       />
+//     </div>
+//   )
+// }
 
 export default CreateAdmin
-
-// <form className="newUserForm">
-// {/* New User Item*/}
-// <div className="newUserItem">
-//   <label>Username</label>
-//   <input
-//     type="text"
-//     placeholder="john"
-//   />
-// </div>
-// {/* New User Item*/}
-// <div className="newUserItem">
-//   <label>Full Name</label>
-//   <input
-//     type="text"
-//     placeholder="john Smith"
-//   />
-// </div>
-// {/* New User Item*/}
-// <div className="newUserItem">
-//   <label>Email</label>
-//   <input
-//     type="text"
-//     placeholder="john Smith"
-//   />
-// </div>
-// {/* New User Item*/}
-// <div className="newUserItem">
-//   <label>Password</label>
-//   <input
-//     type="text"
-//     placeholder="password"
-//   />
-// </div>
-// {/* New User Item*/}
-// <div className="newUserItem">
-//   <label>Phone</label>
-//   <input
-//     type="text"
-//     placeholder="+ 1 252 552 25"
-//   />
-// </div>
-// <div className="newUserItem">
-//   <label>Active</label>
-//   <select
-//     name="active"
-//     id="active"
-//     className="newUserSelect"
-//   >
-//     {/* <option value="">Select an option</option> */}
-//     <option value="yes">Yes</option>
-//     <option value="no">No</option>
-//   </select>
-// </div>
-// <button className="newUserButton">Create</button>
-// </form>

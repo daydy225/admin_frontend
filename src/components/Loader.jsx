@@ -1,6 +1,6 @@
 import DotLoader from 'react-spinners/DotLoader'
 
-const Loader = ({ loading }) => {
+const Loader = ({ loading, height, color, size }) => {
   const override = {
     display: 'block',
     margin: '0 auto',
@@ -11,13 +11,13 @@ const Loader = ({ loading }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        height: height ? height : '100vh',
       }}
     >
       <DotLoader
-        color="#8ec5fc"
+        color={color || '#8ec5fc'}
         loading={loading}
-        size={60}
+        size={size || 100}
         cssOverride={override}
         aria-label="Loading ..."
         data-testid="loader"

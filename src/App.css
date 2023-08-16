@@ -227,6 +227,10 @@ body {
   margin-top: 10px;
 }
 
+.userUpdateInput:focus {
+  text-indent: 5px;
+}
+
 .userUpdateItem > label {
   margin-bottom: 5px;
   font-size: 14px;
@@ -278,6 +282,14 @@ body {
   font-weight: 600;
   cursor: pointer;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #3bb077;
+    opacity: 0.8;
+  }
 }
 
 .newUser {
@@ -324,6 +336,7 @@ body {
 .newUserSelect {
   height: 40px;
   border-radius: 5px;
+  text-indent: 5px;
 }
 
 .newUserButton {
@@ -336,4 +349,12 @@ body {
   padding: 10px 35px;
   cursor: pointer;
   margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #3bb077;
+    opacity: 0.8;
+  }
 }

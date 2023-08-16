@@ -8,7 +8,10 @@ export const login = async credentials => {
   return response.data
 }
 export const register = async credentials => {
-  const response = await axios.post(`${baseUrl}/auth/register`, credentials)
+  const response = await axios.post(
+    `${baseUrl}/auth/admin-register`,
+    credentials,
+  )
   return response.data
 }
 
@@ -23,6 +26,15 @@ export const verify = async token => {
 
 export const getAllAdmins = async token => {
   const response = await axios.get(`${baseUrl}/admin`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  return response.data
+}
+
+export const updateAdmin = async (id, data, token) => {
+  const response = await axios.put(`${baseUrl}/admin/${id}`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
